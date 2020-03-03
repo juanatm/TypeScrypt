@@ -53,6 +53,9 @@ html {
     color: lightgrey;
     box-shadow: none;
   }
+  main ul li input:checked + span {
+  text-decoration: line-through;
+}
   header h1 {
     font-size: 30px;
     color: darkgrey;
@@ -87,6 +90,21 @@ html {
     margin: 10px 0;
     align-content: center;
     justify-content: space-between;
+  }
+  main ul li.updating div,
+main ul li.updating i.btn-delete {
+  display: none;
+}
+
+main ul li.updating input {
+  width: 100%;
+  padding: 10px 5px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid darkgrey;
+}
+  main ul li input:checked + span {
+    text-decoration: line-through;
   }
   main div.info {
     display: grid;
