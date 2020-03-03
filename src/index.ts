@@ -41,13 +41,37 @@ input.onkeypress = (e) => {
 
        
         takeOnTask();
+
+        span.onclick=(e)=>{
+            let input=document.createElement('input');
+            input.focus();
+            input.type='text';
+            let icon=document.createElement('i');
+             icon.className="material-icons";
+            icon.textContent="done";
+            let li=span.parentElement.parentElement
+            li.appendChild(input);
+            li.appendChild(icon);
+            li.classList.add("updating");
+
+            icon.onclick=(e)=>{
+                span.textContent=input.value;
+                li.classList.remove("updating");
+                li.removeChild(input);
+                li.removeChild(icon);
+            }
+        }
+        
+        icon.onclick=(e)=>{
+        //document.getElementById("tasktoEliminate").textContent=li.textContent;
+        let parent=icon.parentElement;
+        document.getElementById('tasktoEliminate').textContent=input.textContent;
+        document.getElementById('cont').style.display='block';
         yesButton.onclick=(e)=>{
             document.getElementById('cont').style.display='none';
-            li.remove();
+            takeOffTask();
+            parent.remove();
         }
-        icon.onclick=(e)=>{
-        document.getElementById("tasktoEliminate").textContent=li.textContent;
-        document.getElementById('cont').style.display='block';
         
     }
      }
