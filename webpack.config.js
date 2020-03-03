@@ -4,11 +4,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   plugins: [
+    new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: false
+    }),
     new CopyPlugin([
-      { from: 'source', to: 'dest' },
-      { from: 'other', to: 'public' },
+      { from: 'src/index.html', to: 'index.html' },
     ]),
-    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false})
   ],
   entry: './src/index.ts',
   devtool: 'inline-source-map',
