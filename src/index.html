@@ -1,10 +1,46 @@
 <!doctype html>
 <html>
  <head>
+  <title>Task Manager</title>
 
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700|Roboto:300,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
  </head>
  <body>
+<header>
+<h1>Administrador de tareas</h1>
+</header>
+<main>
+  <label>
+    <input id="addTaskInput" type="text" placeholder="¿Qué necesitas hacer?">
+  </label>
+<ul>
 
+</ul>
+<div class="info">
+  <p id="tasksLeft">Quedan 6 tareas</p>
+  <div>
+    <button id="allButton" class="button" disabled>Todas</button>
+    <button id="pendingButton" class="button">Pendientes</button>
+    <button id="completedButton" class="button">Completadas</button>
+  </div>
+</div>
+
+<div>
+<h1>Estas seguro de que deseas eliminar esta tarea?</h1>
+<p></p>
+<div>
+  <button id="yesButton" class="button" >Si</button>
+  <button id="noButton" class="button">No</button>
+</div>
+</div>
+</main>
+<footer>
+<p>Autor: Juan Blanco Perales</p>
+<p>Github</p>
+</footer>
    <script src="bundle.js"></script>
  </body>
 </html>
