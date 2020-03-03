@@ -8,7 +8,7 @@ module.exports = {
       cleanStaleWebpackAssets: false
     }),
     new CopyPlugin([
-      { from: 'src/index.html', to: 'index.html' },
+      { from: 'src/index.html', to: 'index.html' },{ from: 'src/styles.css', to: 'styles.css' },
     ]),
   ],
   entry: './src/index.ts',
