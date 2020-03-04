@@ -44,8 +44,9 @@ input.onkeypress = (e) => {
 
         span.onclick=(e)=>{
             let input=document.createElement('input');
-            input.focus();
+            
             input.type='text';
+            input.value=span.textContent;
             let icon=document.createElement('i');
              icon.className="material-icons";
             icon.textContent="done";
@@ -53,6 +54,7 @@ input.onkeypress = (e) => {
             li.appendChild(input);
             li.appendChild(icon);
             li.classList.add("updating");
+            input.focus();
 
             icon.onclick=(e)=>{
                 span.textContent=input.value;
@@ -65,11 +67,13 @@ input.onkeypress = (e) => {
         icon.onclick=(e)=>{
         //document.getElementById("tasktoEliminate").textContent=li.textContent;
         let parent=icon.parentElement;
-        document.getElementById('tasktoEliminate').textContent=input.textContent;
+        document.getElementById('tasktoEliminate').textContent=span.textContent;
         document.getElementById('cont').style.display='block';
         yesButton.onclick=(e)=>{
             document.getElementById('cont').style.display='none';
+            if(inputbox.checked===false){
             takeOffTask();
+            }
             parent.remove();
         }
         
