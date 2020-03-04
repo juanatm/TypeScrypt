@@ -86,6 +86,7 @@ input.onkeypress = (e) => {
             inputbox.id="yes";
         }
    }
+   input.value="";
 }
 
 // NO BUTTON EVENT
@@ -115,9 +116,9 @@ completed.onclick=(e)=>{
     for(let i=0;i<ul.children.length;i++){
       let state= ul.children[i].children[0].children[0].getAttribute('id');
       if(state==='no'){
-          ul.children[i].classList.add("updating");
+            ul.children[i].classList.add("updating");
       }else{
-        ul.children[i].classList.remove("updating");
+            ul.children[i].classList.remove("updating");
       }
     }
 }
