@@ -8,21 +8,20 @@ const noButton=<HTMLInputElement>document.getElementById('noButton');
 const all=<HTMLInputElement>document.getElementById('allButton');
 let taskCounter=0;
 
-
-
-//Añadir tarea
+//ADD TASK
 let takeOnTask=()=>{
     taskCounter++;
     tasks.textContent="Quedan "+taskCounter+" tareas";
 }
+
+//REMOVE TASK
 let takeOffTask=()=>{
     taskCounter--;
     tasks.textContent="Quedan "+taskCounter+" tareas";
 }
-
+//INSERT ELEMENT EVENT
 input.onkeypress = (e) => {
     if(e.key==="Enter"){
-        
         let li=document.createElement('li');
         let div=document.createElement('div');
         var inputbox=document.createElement('input');
@@ -38,24 +37,22 @@ input.onkeypress = (e) => {
         li.appendChild(icon);
         ul.appendChild(li);
         span.textContent=input.value;
-
-       
         takeOnTask();
 
+        //CHANGE ELEMENT EVENT
         span.onclick=(e)=>{
             let input=document.createElement('input');
-            
             input.type='text';
             input.value=span.textContent;
             let icon=document.createElement('i');
-             icon.className="material-icons";
+            icon.className="material-icons";
             icon.textContent="done";
-            let li=span.parentElement.parentElement
             li.appendChild(input);
             li.appendChild(icon);
             li.classList.add("updating");
             input.focus();
 
+            //DONE ICON PRESS EVENT
             icon.onclick=(e)=>{
                 span.textContent=input.value;
                 li.classList.remove("updating");
@@ -63,47 +60,44 @@ input.onkeypress = (e) => {
                 li.removeChild(icon);
             }
         }
-        
+        //REMOVE ITEM EVENT
         icon.onclick=(e)=>{
-        //document.getElementById("tasktoEliminate").textContent=li.textContent;
-        let parent=icon.parentElement;
-        document.getElementById('tasktoEliminate').textContent=span.textContent;
-        document.getElementById('cont').style.display='block';
-        yesButton.onclick=(e)=>{
-            document.getElementById('cont').style.display='none';
-            if(inputbox.checked===false){
-            takeOffTask();
-            }
-            parent.remove();
-        }
-        
-    }
-     }
-     inputbox.onclick = (e)=>{
-     if(inputbox.checked===false){
-        takeOnTask();
-        inputbox.id="no";
-     }else{
-         takeOffTask();
-         inputbox.id="yes";
-     }
-   }
-  
-input.value="";
-   
+            document.getElementById('tasktoEliminate').textContent=span.textContent;
+            document.getElementById('cont').style.display='block';
 
-   
+            //YES BUTTON EVENT
+            yesButton.onclick=(e)=>{
+                document.getElementById('cont').style.display='none';
+                if(inputbox.checked===false){
+                    takeOffTask();
+                }
+            li.remove();
+            }
+        }
+    }
+
+    //DONE OR UNDONE TASK EVENT
+    inputbox.onclick = (e)=>{
+        if(inputbox.checked===false){
+            takeOnTask();
+            inputbox.id="no";
+        }else{
+            takeOffTask();
+            inputbox.id="yes";
+        }
+   }
 }
+
+// NO BUTTON EVENT
 noButton.onclick=(e)=>{
     document.getElementById('cont').style.display='none';
 }
 
-
+//  COMPLETED, PENDENT AND ALL BUTTONS EVENTS
 pendents.onclick=function(){
-   pendents.disabled=true;
-   completed.disabled=false;
-   all.disabled=false;
-    
+    pendents.disabled=true;
+    completed.disabled=false;
+    all.disabled=false;
     for(let i=0;i<ul.children.length;i++){
       let state= ul.children[i].children[0].children[0].getAttribute('id');
       if(state==='yes'){
@@ -111,9 +105,9 @@ pendents.onclick=function(){
       }else{
         ul.children[i].classList.remove("updating");
       }
-      
     }
 }
+
 completed.onclick=(e)=>{
     pendents.disabled=false;
     completed.disabled=true;
@@ -125,24 +119,16 @@ completed.onclick=(e)=>{
       }else{
         ul.children[i].classList.remove("updating");
       }
-      
     }
 }
+
 all.onclick=(e)=>{
-    pendents.disabled=false;
-   completed.disabled=false;
-   all.disabled=true;
+     pendents.disabled=false;
+     completed.disabled=false;
+     all.disabled=true;
     
-    for(let i=0;i<ul.children.length;i++){
+     for(let i=0;i<ul.children.length;i++){
       let state= ul.children[i].children[0].children[0].getAttribute('id');
       ul.children[i].classList.remove("updating");
-      
-    }
+     }
 }
-
-
-
-
-
-
-
